@@ -82,3 +82,6 @@ GitHub Project used for inspiration on using Flask: https://github.com/milesluce
 In addition to these sites, ChatGPT was utlized in the polishing of the code to ensure that the visualizations, scripts, and datasets worked properly.
 
 Link to the presentation: https://docs.google.com/presentation/d/17n71swIUCKwYSaMtm_8_TUNbOkOXrr3eTyBO_1bsInk/edit?usp=sharing
+
+---
+*NOTE: This repository is a copy of the original, which we used while working on this project. The original can be found [here.](https://github.com/hippopotamuspal/medicare_data_project) I duplicated it to upload on my own GitHub for easier tracking and showcasing of the project.*
