@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Medicare Data Visualization by State</title>
+  
+  <!-- Link to bootstrap -->
+  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  
+  <!-- Plotly for pie and bar charts -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  
+  <!-- Leaflet.js for choropleth map visualization -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  
+  <!-- Leaflet Choropleth Plugin -->
+  <script src="https://unpkg.com/leaflet-choropleth/leaflet.choropleth.js"></script>
+  
+  <!-- D3 plugin -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  
+  <!-- Our CSS File-->
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+
+<body class="bg-space-gray text-white">
+    <br>
+    <!-- National Choropleth -->
+    <div class="container">
+      <h1 class="text-center">Medicare Analysis across the US</h1>
+      <p class="text-center">Use the interactive charts below to explore the dataset</p>
+      <br>
+        <div class="container text-center">
+            <div class="row justify-content-md-center">
+                <div class="col-md-3">
+                    <div class="card card-body bg-light">
+                        <div class="card-header">
+                            <h6 class="card-title text-black">Select Data to Display:</h6>
+                            <select class="form-select" id="dataFilterNational" onchange="updateChoropleth(this.value)">
+                                <option value="avg_oop">Average OOP Payment</option>
+                                <option value="avg_insured">Average Medicare Payment</option>
+                                <option value="total_discharges">Total Number of Discharges</option>
+                            </select> 
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card card-primary">
+                        <div class="card-header">
+                          <h4 class="card-title">Description</h4>
+                        </div>
+                        <div id="infoText" class="card-body">Description body.</div>
+                    </div>
+                    <br>
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                          <h4 class="card-title">Definitions</h4>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">OOP: Out-of-Pocket</li>
+                            <li class="list-group-item">MDC Code: Major Diagnostic Category (MDC) Code</li>
+                          </ul>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div id="nationalChoropleth" class="text-black" style="width: 100%; height: 500px; text-align: left;"></div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <br>
+    <br>
+    <br>
+    <!-- State Analysis Section -->
+    <header>
+        <h1 class="text-center">Medicare Data Visualization by State</h1>
+        <p class="text-center">Select a state from the dropdown to see detailed visualizations of 2022 Medicare data in that State:</p>
+    </header>
+    <br>
+    <!-- Dropdown to select a state -->
+    <div class="container">
+        <div class="container text-center">
+            <div class="row justify-content-md-center">
+                <div class="col-md-3">
+                    <div class="card card-body bg-light">
+                        <div class="card-header">
+                            <label for="state" class="text-black">Select a State:</label>
+                            <select id="state" class="form-select text-center" onchange="optionChanged(this.value)"></select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card card-secondary">
+                        <label for="dataFilter" class="text-black">Select Data to Display:</label>
+                        <select id="dataFilter" class="form-select text-center">
+                            <option value="avg_oop">Average Out-of-Pocket Payment</option>
+                            <option value="avg_medicare_payment">Average Medicare Payment</option>
+                            <option value="discharges">Total Number of Discharges</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div id="paymentBreakdownChart" style="width: 100%; height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- Horizontal Bar Chart for Top 10 Conditions -->
+    <section class="container">
+    <h2>Top 10 MDC Codes by State</h2>
+    <div id="topConditionsChart" style="width: auto; height: auto;"></div>
+    </section>
+    <br>
+    <br>
+    <br>
+  
+    <!-- Link to your JavaScript file -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="../static/js/app.js"></script>     
+</body>
+      
+</html>
